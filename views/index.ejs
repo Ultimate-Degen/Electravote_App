@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectraVote</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Ensure the correct path -->
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script src="/js/scripts.js" defer></script>
 </head>
 <body>
     <header>
@@ -24,37 +25,5 @@
     <footer>
         <p>ElectraVote &copy; 2024</p>
     </footer>
-
-    <script>
-        const connectWalletButton = document.getElementById('connectWallet');
-        const disconnectWalletButton = document.getElementById('disconnectWallet');
-        let provider;
-
-        async function connectWallet() {
-            if (window.ethereum) {
-                provider = new ethers.providers.Web3Provider(window.ethereum);
-                try {
-                    await provider.send("eth_requestAccounts", []);
-                    const signer = provider.getSigner();
-                    const address = await signer.getAddress();
-                    alert(`Connected: ${address}`);
-                    // Optionally update the UI with the connected wallet address
-                } catch (error) {
-                    console.error(error);
-                }
-            } else {
-                alert('Please install MetaMask!');
-            }
-        }
-
-        function disconnectWallet() {
-            provider = null;
-            alert('Wallet disconnected');
-            // Optionally update the UI to reflect the disconnection
-        }
-
-        connectWalletButton.addEventListener('click', connectWallet);
-        disconnectWalletButton.addEventListener('click', disconnectWallet);
-    </script>
 </body>
 </html>
