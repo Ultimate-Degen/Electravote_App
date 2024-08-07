@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectraVote - Profile</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ElectraVote</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-election">Create Election</a></li>
+                <li><a href="/voting">Voting</a></li>
+                <li><a href="/results">Results</a></li>
+                <li><a href="/my-elections">My Elections</a></li>
+                <li><a href="/voting-history">Voting History</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/my-elections"><i class="fas fa-vote-yea"></i> My Elections</a></li>
+                <li><a href="/voting-history"><i class="fas fa-history"></i> Voting History</a></li>
+                <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+        
+        <main>
+            <section id="profile">
+                <h1>My Profile</h1>
+                <form id="profile-form" method="POST" action="/profile">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="<%= userProfile.name %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="<%= userProfile.email %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" value="<%= userProfile.password %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" name="phone" value="<%= userProfile.phone %>" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">Update Profile</button>
+                        <button type="reset" class="btn secondary">Cancel</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

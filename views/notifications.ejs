@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectraVote - Notifications</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ElectraVote</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-election">Create Election</a></li>
+                <li><a href="/voting">Voting</a></li>
+                <li><a href="/results">Results</a></li>
+                <li><a href="/my-elections">My Elections</a></li>
+                <li><a href="/voting-history">Voting History</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/notifications">Notifications</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/my-elections"><i class="fas fa-vote-yea"></i> My Elections</a></li>
+                <li><a href="/voting-history"><i class="fas fa-history"></i> Voting History</a></li>
+                <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="/notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+            </ul>
+        </aside>
+        
+        <main>
+            <section id="notifications">
+                <h1>Notifications</h1>
+                <ul>
+                    <% notifications.forEach(notification => { %>
+                        <li>
+                            <p><strong>Date:</strong> <%= notification.date %></p>
+                            <p><%= notification.message %></p>
+                        </li>
+                    <% }); %>
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

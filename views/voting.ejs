@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectraVote - Voting</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ElectraVote</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-election">Create Election</a></li>
+                <li><a href="/results">Results</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/my-elections"><i class="fas fa-vote-yea"></i> My Elections</a></li>
+                <li><a href="/voting-history"><i class="fas fa-history"></i> Voting History</a></li>
+                <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+        
+        <main>
+            <section id="voting">
+                <h1>Cast Your Vote</h1>
+                <form id="voting-form" method="POST" action="/voting">
+                    <div class="form-group">
+                        <label for="election">Select Election:</label>
+                        <select id="election" name="election" required>
+                            <option value="" disabled selected>Select an election</option>
+                            <% elections.forEach(election => { %>
+                                <option value="<%= election.id %>"><%= election.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    
+                    <div id="candidates-section" class="form-group">
+                        <label for="candidates">Candidates:</label>
+                        <div id="candidates">
+                            <!-- Candidate options will be dynamically populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">Submit Vote</button>
+                        <button type="reset" class="btn secondary">Cancel</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        document.getElementById('election').addEventListener('change', function() {
+            var electionId = this.value;
+            var candidatesSection = document.getElementById('candidates');
+
+            // Clear any existing candidate options
+            candidatesSection.innerHTML = '';
+
+            // Get the selected election's candidates
+            var selectedElection = elections.find(election => election.id == electionId);
+            if (selectedElection) {
+                selectedElection.candidates.forEach(function(candidate) {
+                    var candidateOption = document.createElement('div');
+                    candidateOption.classList.add('candidate-option');
+                    candidateOption.innerHTML = `
+                        <input type="radio" id="${candidate}" name="candidate" value="${candidate}" required>
+                        <label for="${candidate}">${candidate}</label>
+                    `;
+                    candidatesSection.appendChild(candidateOption);
+                });
+            }
+        });
+
+        // Passing elections data to the client-side script
+        const elections = JSON.parse('<%- JSON.stringify(elections) %>');
+    </script>
+</body>
+</html>
