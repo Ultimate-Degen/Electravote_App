@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '../../views'));
 app.set('views', path.join(__dirname, 'views'));
-console.log('Current directory:', __dirname);
+console.log('views directory:', __dirname, 'views');
 
 // Routes
 const indexRoute = require('../../routes/index');
@@ -41,3 +41,8 @@ app.use('/dashboard', dashboardRoute);
 app.use('/notifications', notificationsRoute);
 
 module.exports.handler = serverless(app);
+const fs = require('fs');
+
+console.log('Current directory:', __dirname);
+console.log('Views directory:', path.join(__dirname, 'views'));
+console.log('Files in views directory:', fs.readdirSync(path.join(__dirname, 'views')));

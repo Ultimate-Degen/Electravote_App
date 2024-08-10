@@ -9,4 +9,4 @@
 
 [functions]
   directory = "netlify/functions"
-  included_files = ["views/**"]
+  included_files = ["views/**", "routes/**"]
