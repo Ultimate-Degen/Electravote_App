@@ -6,3 +6,7 @@
   from = "/*"
   to = "/.netlify/functions/server"
   status = 200
+
+[functions]
+  directory = "netlify/functions"
+  included_files = ["views/**"]
