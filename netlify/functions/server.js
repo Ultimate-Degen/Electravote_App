@@ -14,9 +14,9 @@ app.use('/css', express.static(path.join(__dirname, '../public/css')));
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
 app.use('/js', express.static(path.join(__dirname, '../public/js')));
 
-// View Engine
+// View Engine - Adjusted path to the views directory
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../views'));  
 
 // Routes
 const indexRoute = require('./routes/index');
