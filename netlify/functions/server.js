@@ -188,15 +188,15 @@ const settingsRoute = require('./routes/settings');
 const dashboardRoute = require('./routes/dashboard');
 const notificationsRoute = require('./routes/notifications');
 
-app.use('/', indexRoute);
-app.use('/create-election', createElectionRoute);
-app.use('/voting', votingRoute);
-app.use('/results', resultsRoute);
-app.use('/my-elections', myElectionsRoute);
-app.use('/voting-history', votingHistoryRoute);
-app.use('/profile', profileRoute);
-app.use('/settings', settingsRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/notifications', notificationsRoute);
+app.use('./views/index', indexRoute);
+app.use('./views/create-election', createElectionRoute);
+app.use('./views/voting', votingRoute);
+app.use('./views/results', resultsRoute);
+app.use('./views/my-elections', myElectionsRoute);
+app.use('./views/voting-history', votingHistoryRoute);
+app.use('./views/profile', profileRoute);
+app.use('./views/settings', settingsRoute);
+app.use('./views/dashboard', dashboardRoute);
+app.use('./views/notifications', notificationsRoute);
 
 module.exports.handler = serverless(app);
