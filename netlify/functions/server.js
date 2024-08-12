@@ -10,15 +10,15 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve static files from the correct directory
-app.use('/css', express.static(path.join(__dirname, '../public/css')));
-app.use('/images', express.static(path.join(__dirname, '../public/images')));
-app.use('/js', express.static(path.join(__dirname, '../public/js')));
+app.use('/css', express.static(path.join(__dirname, '../../public/css')));
+app.use('/images', express.static(path.join(__dirname, '../../public/images')));
+app.use('/js', express.static(path.join(__dirname, '../../public/js')));
 
-// View Engine - Adjusted path to the views directory
+// View Engine - Set path to the views directory now inside netlify/functions
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));  
+app.set('views', path.join(__dirname, './views'));  // Views path adjusted to reflect new location
 
-// Routes
+// Routes - Adjusted to reflect new location
 const indexRoute = require('./routes/index');
 const createElectionRoute = require('./routes/create-election');
 const votingRoute = require('./routes/voting');
