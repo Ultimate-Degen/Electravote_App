@@ -1,5 +1,5 @@
 
-/*const express = require('express');
+const express = require('express');
 const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -37,16 +37,16 @@ console.log('views directory:', __dirname, 'views');
 app.get('/', (req, res) => {
     res.send(indexHtml);
   });
-const indexRoute = require('../../routes/index');
-const createElectionRoute = require('../../routes/create-election');
-const votingRoute = require('../../routes/voting');
-const resultsRoute = require('../../routes/results');
-const myElectionsRoute = require('../../routes/my-elections');
-const votingHistoryRoute = require('../../routes/voting-history');
-const profileRoute = require('../../routes/profile');
-const settingsRoute = require('../../routes/settings');
-const dashboardRoute = require('../../routes/dashboard');
-const notificationsRoute = require('../../routes/notifications');
+  const indexRoute = require('./routes/index');
+  const createElectionRoute = require('./routes/create-election');
+  const votingRoute = require('./routes/voting');
+  const resultsRoute = require('./routes/results');
+  const myElectionsRoute = require('./routes/my-elections');
+  const votingHistoryRoute = require('./routes/voting-history');
+  const profileRoute = require('./routes/profile');
+  const settingsRoute = require('./routes/settings');
+  const dashboardRoute = require('./routes/dashboard');
+  const notificationsRoute = require('./routes/notifications');
 
 app.use('/', indexRoute);
 app.use('/create-election', createElectionRoute);
@@ -64,7 +64,7 @@ const fs = require('fs');
 
 console.log('Current directory:', __dirname);
 console.log('Views directory:', path.join(__dirname, 'views'));
-console.log('Files in views directory:', fs.readdirSync(path.join(__dirname, 'views')));*/
+console.log('Files in views directory:', fs.readdirSync(path.join(__dirname, 'views')));
 /*const express = require('express');
 const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
@@ -112,7 +112,7 @@ console.log('Current directory:', __dirname);
 
 module.exports.handler = serverless(app);*/
 
-const express = require('express');
+/*const express = require('express');
 const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -159,4 +159,4 @@ app.get('/debug', (req, res) => {
 console.log('Server starting...');
 console.log('Current directory:', __dirname);
 
-module.exports.handler = serverless(app);
+module.exports.handler = serverless(app);*/
