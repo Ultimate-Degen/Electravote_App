@@ -11,6 +11,22 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../../public')));
 
+// Inline view
+const indexHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectraVote - Secure, Transparent, Scalable Voting</title>
+</head>
+<body>
+    <h1>Welcome to ElectraVote</h1>
+    <p>Secure, Transparent, and Scalable Voting for the Digital Age</p>
+</body>
+</html>
+`;
+
 // View Engine
 app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '../../views'));
@@ -18,6 +34,9 @@ app.set('views', path.join(__dirname, 'views'));
 console.log('views directory:', __dirname, 'views');
 
 // Routes
+app.get('/', (req, res) => {
+    res.send(indexHtml);
+  });
 const indexRoute = require('../../routes/index');
 const createElectionRoute = require('../../routes/create-election');
 const votingRoute = require('../../routes/voting');
