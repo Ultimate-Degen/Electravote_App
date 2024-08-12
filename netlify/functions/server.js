@@ -8,7 +8,11 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve static files from the correct directory
+app.use('/css', express.static(path.join(__dirname, '../public/css')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+app.use('/js', express.static(path.join(__dirname, '../public/js')));
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -26,7 +30,7 @@ const settingsRoute = require('./routes/settings');
 const dashboardRoute = require('./routes/dashboard');
 const notificationsRoute = require('./routes/notifications');
 
-// Correct paths for the routes
+// Use routes
 app.use('/', indexRoute);
 app.use('/create-election', createElectionRoute);
 app.use('/voting', votingRoute);
