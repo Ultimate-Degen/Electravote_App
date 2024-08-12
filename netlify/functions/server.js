@@ -14,10 +14,13 @@ app.use('/css', express.static(path.join(__dirname, '../../public/css')));
 app.use('/images', express.static(path.join(__dirname, '../../public/images')));
 app.use('/js', express.static(path.join(__dirname, '../../public/js')));
 
-// View Engine - Set path to the views directory now inside netlify/views
+// Log current directory and the views path
+console.log("Current directory:", __dirname);
+console.log("Looking for views in:", path.join(__dirname, '../views'));
+
+// View Engine - Revert to relative path
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views')); 
-//app.set('views', path.resolve('/netlify/functions/views'));
+app.set('views', path.join(__dirname, '../views'));  // ../views because views is in netlify, server.js is in netlify/functions
 
 // Routes
 const indexRoute = require('../routes/index');
@@ -43,7 +46,3 @@ app.use('/dashboard', dashboardRoute);
 app.use('/notifications', notificationsRoute);
 
 module.exports.handler = serverless(app);
-
-console.log("Current directory:", __dirname);
-console.log("Looking for views in:", path.join(__dirname, '../views'));
-
