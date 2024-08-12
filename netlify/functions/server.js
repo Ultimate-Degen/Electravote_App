@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -41,5 +41,22 @@ app.use('/profile', profileRoute);
 app.use('/settings', settingsRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/notifications', notificationsRoute);
+
+module.exports.handler = serverless(app);*/
+
+const express = require('express');
+const serverless = require('serverless-http');
+const path = require('path');
+
+const app = express();
+
+console.log("Current directory:", __dirname);
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Test' });
+});
 
 module.exports.handler = serverless(app);
