@@ -16,7 +16,8 @@ app.use('/js', express.static(path.join(__dirname, '../../public/js')));
 
 // View Engine - Set path to the views directory now inside netlify/views
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));  // ../views because views is in netlify, server.js is in netlify/functions
+//app.set('views', path.join(__dirname, '../views'));  // 
+app.set('views', path.resolve('/netlify/functions/views'));
 
 // Routes
 const indexRoute = require('../routes/index');
