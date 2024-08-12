@@ -21,7 +21,7 @@ console.log("Looking for views in:", path.join(__dirname, '../views'));
 // View Engine - Revert to relative path
 app.set('view engine', 'ejs');
 //app.set('views', path.join(__dirname, '../views'));  // ../views because views is in netlify, server.js is in netlify/functions
-app.set('views','/netlify/views');
+app.set('views', path.join(__dirname, '../views'));
 // Routes
 const indexRoute = require('../routes/index');
 const createElectionRoute = require('../routes/create-election');
