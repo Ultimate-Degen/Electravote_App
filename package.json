@@ -15,6 +15,14 @@
     "serverless-http": "^2.7.0"
   },
   "author": "",
-  "license": "MIT"
-  
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ultimate-Degen/Electravote_Netlify.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Ultimate-Degen/Electravote_Netlify/issues"
+  },
+  "homepage": "https://github.com/Ultimate-Degen/Electravote_Netlify#readme"
 }
