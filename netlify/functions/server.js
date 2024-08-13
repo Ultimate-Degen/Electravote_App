@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
 // Import routes
-const indexRoute = require('../../routes/index');
+/*const indexRoute = require('../../routes/index');
 const createElectionRoute = require('../../routes/create-election');
 const votingRoute = require('../../routes/voting');
 const resultsRoute = require('../../routes/results');
@@ -20,7 +20,11 @@ const votingHistoryRoute = require('../../routes/voting-history');
 const profileRoute = require('../../routes/profile');
 const settingsRoute = require('../../routes/settings');
 const dashboardRoute = require('../../routes/dashboard');
-const notificationsRoute = require('../../routes/notifications');
+const notificationsRoute = require('../../routes/notifications');*/
+
+app.get('/.netlify/functions/server/', (req, res) => {
+    res.render('index');
+});
 
 // Correctly configure the base route
 app.use('/.netlify/functions/server/', indexRoute);
@@ -35,7 +39,7 @@ app.use('/.netlify/functions/server/dashboard', dashboardRoute);
 app.use('/.netlify/functions/server/notifications', notificationsRoute);
 
 // Catch-all route for handling unknown paths
-app.get('/.netlify/functions/server/*', (req, res) => {
+app.get('*', (req, res) => {
     res.status(404).send("Sorry, that route doesn't exist.");
 });
 
