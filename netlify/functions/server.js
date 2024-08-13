@@ -1,15 +1,13 @@
 const express = require('express');
 const serverless = require('serverless-http');
-const bodyParser = require('body-parser');
 const path = require('path');
 const ejs = require('ejs');
 const app = express();
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+// Middleware to serve static files
 app.use(express.static(path.join(__dirname, '../../public')));
 
-// View Engine
+// View Engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
@@ -25,7 +23,7 @@ const settingsRoute = require('../../routes/settings');
 const dashboardRoute = require('../../routes/dashboard');
 const notificationsRoute = require('../../routes/notifications');
 
-app.use('/', indexRoute);
+app.use('/.netlify/functions/server/', indexRoute);
 app.use('/.netlify/functions/server/create-election', createElectionRoute);
 app.use('/.netlify/functions/server/voting', votingRoute);
 app.use('/.netlify/functions/server/results', resultsRoute);
