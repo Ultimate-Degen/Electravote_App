@@ -1,26 +1,38 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
-
-const app = express();
+const ejs = require('ejs');
+//const app = express();
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '../../public')));
 
-// Set up the view engine
+// View Engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
-// Define a simple root route to test
-app.get('/.netlify/functions/server/', (req, res) => {
-    res.render('index'); // Render the index.ejs view
-});
+// Import routes
+const indexRoute = require('../../routes/index');
+const createElectionRoute = require('../../routes/create-election');
+const votingRoute = require('../../routes/voting');
+const resultsRoute = require('../../routes/results');
+const myElectionsRoute = require('../../routes/my-elections');
+const votingHistoryRoute = require('../../routes/voting-history');
+const profileRoute = require('../../routes/profile');
+const settingsRoute = require('../../routes/settings');
+const dashboardRoute = require('../../routes/dashboard');
+const notificationsRoute = require('../../routes/notifications');
 
-// Other routes
-app.use('/.netlify/functions/server/create-election', require('../../routes/create-election'));
-app.use('/.netlify/functions/server/voting', require('../../routes/voting'));
-app.use('/.netlify/functions/server/results', require('../../routes/results'));
-// Add other routes as needed
+// Route handling
+app.use('/.netlify/functions/server/', indexRoute);
+app.use('/.netlify/functions/server/create-election', createElectionRoute);
+app.use('/.netlify/functions/server/voting', votingRoute);
+app.use('/.netlify/functions/server/results', resultsRoute);
+app.use('/.netlify/functions/server/my-elections', myElectionsRoute);
+app.use('/.netlify/functions/server/voting-history', votingHistoryRoute);
+app.use('/.netlify/functions/server/profile', profileRoute);
+app.use('/.netlify/functions/server/settings', settingsRoute);
+app.use('/.netlify/functions/server/dashboard', dashboardRoute);
+app.use('/.netlify/functions/server/notifications', notificationsRoute);
 
-// Export the serverless function
 module.exports.handler = serverless(app);
