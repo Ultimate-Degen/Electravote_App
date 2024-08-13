@@ -10,9 +10,9 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
-// Simple test route
+// Render the index.ejs view on the root route
 app.get('/.netlify/functions/server/', (req, res) => {
-    res.send('Root route is working!');
+    res.render('index');  // Rendering the index.ejs view
 });
 
 // Catch-all route
