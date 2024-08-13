@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 router.get('/', (req, res) => {
-    res.render('index');  // Changed from sendFile to render
+    res.sendFile(path.join(__dirname, "../views", "index.ejs"));
 });
 
 module.exports = router;
