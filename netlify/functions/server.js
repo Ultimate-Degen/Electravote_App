@@ -46,19 +46,31 @@ app.use('/dashboard', dashboardRoute);
 app.use('/notifications', notificationsRoute);
 
 module.exports.handler = serverless(app);*/
+
 const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
 const ejs = require('ejs');
 const app = express();
 
+// Middleware
+app.use(express.urlencoded({ extended: false }));
+
+// Serve static files from the correct directory
+app.use('/css', express.static(path.join(__dirname, '../../public/css')));
+app.use('/images', express.static(path.join(__dirname, '../../public/images')));
+app.use('/js', express.static(path.join(__dirname, '../../public/js')));
+
+// Log current directory and the views path
 console.log("Current directory:", __dirname);
+console.log("Looking for views in:", path.join(__dirname, '../views'));
 
+// View Engine - Set correct path to views directory
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../views'));  // This should move up one level to reach netlify/views
 
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Test' });
-});
+// Routes
+const indexRoute = require('../routes/index');
+app.use('/', indexRoute);
 
 module.exports.handler = serverless(app);
