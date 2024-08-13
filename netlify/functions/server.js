@@ -37,7 +37,7 @@ app.use('/notifications', notificationsRoute);
 
 // Catch-all route
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public', 'index.ejs'));
+    res.render('index');  // Changed from sendFile to render
 });
 
 // 404 Error handler
