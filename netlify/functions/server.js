@@ -7,7 +7,7 @@ const app = express();
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '../../public')));
 
-// View Engine setup
+// View Engine setup with correct paths
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
@@ -23,26 +23,22 @@ const settingsRoute = require('../../routes/settings');
 const dashboardRoute = require('../../routes/dashboard');
 const notificationsRoute = require('../../routes/notifications');
 
-// Route handling
-app.use('/', indexRoute);
-app.use('/create-election', createElectionRoute);
-app.use('/voting', votingRoute);
-app.use('/results', resultsRoute);
-app.use('/my-elections', myElectionsRoute);
-app.use('/voting-history', votingHistoryRoute);
-app.use('/profile', profileRoute);
-app.use('/settings', settingsRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/notifications', notificationsRoute);
+// Route handling with the correct paths
+app.use('/.netlify/functions/server', indexRoute);
+app.use('/.netlify/functions/server/create-election', createElectionRoute);
+app.use('/.netlify/functions/server/voting', votingRoute);
+app.use('/.netlify/functions/server/results', resultsRoute);
+app.use('/.netlify/functions/server/my-elections', myElectionsRoute);
+app.use('/.netlify/functions/server/voting-history', votingHistoryRoute);
+app.use('/.netlify/functions/server/profile', profileRoute);
+app.use('/.netlify/functions/server/settings', settingsRoute);
+app.use('/.netlify/functions/server/dashboard', dashboardRoute);
+app.use('/.netlify/functions/server/notifications', notificationsRoute);
 
-// Catch-all route
+// Catch-all route for handling unknown paths
 app.get('*', (req, res) => {
-    res.render('index');  // Changed from sendFile to render
-});
-
-// 404 Error handler
-app.use((req, res, next) => {
     res.status(404).send("Sorry, that route doesn't exist.");
 });
 
+// Export the serverless function
 module.exports.handler = serverless(app);
