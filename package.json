@@ -2,11 +2,10 @@
   "name": "electravote",
   "version": "1.0.0",
   "description": "ElectraVote - A secure, transparent, and scalable voting platform.",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "netlify dev",
-    "postinstall": "npm install ejs"
+    "start": "node app.js",
+    "dev": "netlify dev"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
