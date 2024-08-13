@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-app.get('*', (req, res) => {
-    res.render('index');  
+router.get('/', (req, res) => {
+    res.render('index');  // Changed from sendFile to render
 });
 
 module.exports = router;
