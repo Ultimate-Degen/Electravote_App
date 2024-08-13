@@ -2,7 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
 const ejs = require('ejs');
-//const app = express();
+const app = express();
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '../../public')));
