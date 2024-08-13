@@ -24,14 +24,14 @@ const dashboardRoute = require('../../routes/dashboard');
 const notificationsRoute = require('../../routes/notifications');
 
 app.use('/.netlify/functions/server/', indexRoute);
-app.use('/.netlify/functions/server/create-election', createElectionRoute);
-app.use('/.netlify/functions/server/voting', votingRoute);
-app.use('/.netlify/functions/server/results', resultsRoute);
-app.use('/.netlify/functions/server/my-elections', myElectionsRoute);
-app.use('/.netlify/functions/server/voting-history', votingHistoryRoute);
-app.use('/.netlify/functions/server/profile', profileRoute);
-app.use('/.netlify/functions/server/settings', settingsRoute);
-app.use('/.netlify/functions/server/dashboard', dashboardRoute);
-app.use('/.netlify/functions/server/notifications', notificationsRoute);
+app.use('/.netlify/functions/server/create-election', require('../../routes/create-election'));
+app.use('/.netlify/functions/server/voting', require('../../routes/voting'));
+app.use('/.netlify/functions/server/results', require('../../routes/results'));
+app.use('/.netlify/functions/server/my-elections', require('../../routes/myElectionsRoute'));
+app.use('/.netlify/functions/server/voting-history', require ('../../routes/votingHistoryRoute'));
+app.use('/.netlify/functions/server/profile', require('../../routes/profileRoute'));
+app.use('/.netlify/functions/server/settings', require('../../routes/settingsRoute'));
+app.use('/.netlify/functions/server/dashboard', require('../../routes/dashboardRoute'));
+app.use('/.netlify/functions/server/notifications', require('../../routes/notificationsRoute'));
 
 module.exports.handler = serverless(app);
