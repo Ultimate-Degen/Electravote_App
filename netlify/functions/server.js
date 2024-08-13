@@ -9,7 +9,8 @@ app.use(express.static(path.join(__dirname, '../../public')));
 
 // Set up view engine with absolute path
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../../views'));
+app.set('views', path.join(__dirname, 'views'));
+
 
 // Root route to render the index.ejs view
 app.get('/.netlify/functions/server/', (req, res) => {

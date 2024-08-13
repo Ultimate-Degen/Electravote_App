@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "netlify dev"
+    "dev": "netlify dev",
+    "build": "cp -r views netlify/functions/ && netlify build"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
