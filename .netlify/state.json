@@ -1,0 +1,20 @@
+{
+	"siteId": "9fc42369-5c16-434a-94cd-344ec58c47c7",
+	"geolocation": {
+		"data": {
+			"city": "Johannesburg",
+			"country": {
+				"code": "ZA",
+				"name": "South Africa"
+			},
+			"subdivision": {
+				"code": "GP",
+				"name": "Gauteng"
+			},
+			"timezone": "Africa/Johannesburg",
+			"latitude": -26.2309,
+			"longitude": 28.0583
+		},
+		"timestamp": 1723554811113
+	}
+}
