@@ -1,13 +1,12 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
-const ejs = require('ejs');
 const app = express();
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '../../public')));
 
-// View Engine setup with correct paths
+// Set up view engine with correct paths
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
@@ -23,8 +22,8 @@ const settingsRoute = require('../../routes/settings');
 const dashboardRoute = require('../../routes/dashboard');
 const notificationsRoute = require('../../routes/notifications');
 
-// Route handling with the correct paths
-app.use('/.netlify/functions/server', indexRoute);
+// Correctly configure the base route
+app.use('/.netlify/functions/server/', indexRoute);
 app.use('/.netlify/functions/server/create-election', createElectionRoute);
 app.use('/.netlify/functions/server/voting', votingRoute);
 app.use('/.netlify/functions/server/results', resultsRoute);
@@ -36,7 +35,7 @@ app.use('/.netlify/functions/server/dashboard', dashboardRoute);
 app.use('/.netlify/functions/server/notifications', notificationsRoute);
 
 // Catch-all route for handling unknown paths
-app.get('*', (req, res) => {
+app.get('/.netlify/functions/server/*', (req, res) => {
     res.status(404).send("Sorry, that route doesn't exist.");
 });
 
