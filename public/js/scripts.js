@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const x = e.clientX - rect.left; // x position within the element
         const y = e.clientY - rect.top;  // y position within the element
 
-        // Apply rotation and scale based on mouse position
+        // Apply rotation and scale based on mouse position...
         const rotation = ((x - rect.width / 2) / rect.width) * 60; // Increase rotation to up to 30 degrees
         const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.2; // Increase scaling to up to 20%
 
