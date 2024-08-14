@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const connectWalletButton = document.getElementById('connectWallet');
     const disconnectWalletButton = document.getElementById('disconnectWallet');
     let provider;
-
+    alert('scripts.js is connected!');
     const dotsCircle = document.getElementById('dotsCircle');
 
     dotsCircle.addEventListener('mousemove', (e) => {
