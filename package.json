@@ -6,9 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "netlify dev",
-    "build": "if [ -d views ]; then cp -r views netlify/functions/; fi && npm run build"
-
-
+    "prepare": "if [ -d views ]; then cp -r views netlify/functions/; fi",
+    "build": "npm run prepare && npm run other-build-steps"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
