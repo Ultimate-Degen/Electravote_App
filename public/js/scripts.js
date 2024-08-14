@@ -2,23 +2,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const connectWalletButton = document.getElementById('connectWallet');
     const disconnectWalletButton = document.getElementById('disconnectWallet');
     let provider;
-    alert('scripts.js is connected!');
+
     const dotsCircle = document.getElementById('dotsCircle');
+
+    if (connectWalletButton) {
+        connectWalletButton.addEventListener('click', connectWallet);
+    }
+
+    if (disconnectWalletButton) {
+        disconnectWalletButton.addEventListener('click', disconnectWallet);
+    }
 
     dotsCircle.addEventListener('mousemove', (e) => {
         const rect = dotsCircle.getBoundingClientRect();
-        const x = e.clientX - rect.left; // x position within the element
-        const y = e.clientY - rect.top;  // y position within the element
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-        // Apply rotation and scale based on mouse position...
-        const rotation = ((x - rect.width / 2) / rect.width) * 60; // Increase rotation to up to 30 degrees
-        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.2; // Increase scaling to up to 20%
+        const rotation = ((x - rect.width / 2) / rect.width) * 60;
+        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.2;
 
         dotsCircle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
     });
 
     dotsCircle.addEventListener('mouseleave', () => {
-        // Reset the rotation and scale when the mouse leaves the element
         dotsCircle.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
     });
 
@@ -27,10 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
             provider = new ethers.providers.Web3Provider(window.ethereum);
             try {
                 await provider.send("eth_requestAccounts", []);
-                const signer = provider.getSigner();
-                const address = await signer.getAddress();
+                const accounts = await provider.listAccounts();
+                const address = accounts[0];
                 alert(`Connected: ${address}`);
-                // Optionally update the UI with the connected wallet address
+                
+                connectWalletButton.style.display = 'none';
+                disconnectWalletButton.style.display = 'inline-block';
             } catch (error) {
                 console.error(error);
             }
@@ -42,9 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function disconnectWallet() {
         provider = null;
         alert('Wallet disconnected');
-        // Optionally update the UI to reflect the disconnection
-    }
 
-    connectWalletButton.addEventListener('click', connectWallet);
-    disconnectWalletButton.addEventListener('click', disconnectWallet);
+        connectWalletButton.style.display = 'inline-block';
+        disconnectWalletButton.style.display = 'none';
+    }
 });
