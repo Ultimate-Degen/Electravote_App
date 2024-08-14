@@ -127,7 +127,7 @@ header nav ul li a:hover {
     transform: translate(-50%, -50%);
     width: 200px; /* Adjust the size as needed */
     pointer-events: none; /* Allow mouse events to pass through */
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.2s ease-out;
 }
 
 /* Layout: Container, Aside, Main */
