@@ -38,6 +38,11 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
+    position: relative;
+}
+
+header nav ul li {
+    position: relative;
 }
 
 header nav ul li a {
@@ -50,6 +55,62 @@ header nav ul li a {
 header nav ul li a:hover {
     color: #ffa978;
 }
+
+/* Submenu styling */
+header nav ul li.menu {
+    display: none; /* Hide the menu by default */
+}
+
+header nav ul li.menu ul.submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+}
+
+header nav ul li.menu ul.submenu li {
+    padding: 1rem;
+}
+
+header nav ul li.menu ul.submenu li a {
+    color: #121212;
+    font-weight: 400;
+}
+
+header nav ul li.menu:hover ul.submenu {
+    display: block;
+}
+
+/* Mobile Menu Styling */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li.menu {
+        display: block;
+    }
+
+    header nav ul li:not(.menu) {
+        display: none; /* Hide non-menu items */
+    }
+
+    header nav ul li.menu ul.submenu {
+        position: static;
+        border: none;
+        border-radius: 0;
+    }
+
+    header nav ul li.menu ul.submenu li {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #e3e3e3;
+    }
+}
+
 
 /* Hero Section */
 .hero {
