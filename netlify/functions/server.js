@@ -14,26 +14,26 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../../views'));
 
 // Routes
-const indexRoute = require('../../routes/index');
-const createElectionRoute = require('../../routes/create-election');
-const votingRoute = require('../../routes/voting');
-const resultsRoute = require('../../routes/results');
-const myElectionsRoute = require('../../routes/my-elections');
-const votingHistoryRoute = require('../../routes/voting-history');
-const profileRoute = require('../../routes/profile');
-const settingsRoute = require('../../routes/settings');
-const dashboardRoute = require('../../routes/dashboard');
-const notificationsRoute = require('../../routes/notifications');
+const indexRoute = require('./public/routes/index');
+const createElectionRoute = require('./public/routes/create-election');
+const votingRoute = require('./public/routes/voting');
+const resultsRoute = require('./public/routes/results');
+const myElectionsRoute = require('./public/routes/my-elections');
+const votingHistoryRoute = require('./public/routes/voting-history');
+const profileRoute = require('./public/routes/profile');
+const settingsRoute = require('./public/routes/settings');
+const dashboardRoute = require('./public/routes/dashboard');
+const notificationsRoute = require('./public/routes/notifications');
 
 app.use('/', indexRoute);
-app.use('/.netlify/functions/server/create-election', createElectionRoute);
-app.use('/.netlify/functions/server/voting', votingRoute);
-app.use('/.netlify/functions/server/results', resultsRoute);
-app.use('/.netlify/functions/server/my-elections', myElectionsRoute);
-app.use('/.netlify/functions/server/voting-history', votingHistoryRoute);
-app.use('/.netlify/functions/server/profile', profileRoute);
-app.use('/.netlify/functions/server/settings', settingsRoute);
-app.use('/.netlify/functions/server/dashboard', dashboardRoute);
-app.use('/.netlify/functions/server/notifications', notificationsRoute);
+app.use('/create-election', createElectionRoute);
+app.use('/voting', votingRoute);
+app.use('/results', resultsRoute);
+app.use('/my-elections', myElectionsRoute);
+app.use('/voting-history', votingHistoryRoute);
+app.use('/profile', profileRoute);
+app.use('/settings', settingsRoute);
+app.use('/dashboard', dashboardRoute);
+app.use('/notifications', notificationsRoute);
 
 module.exports.handler = serverless(app);
