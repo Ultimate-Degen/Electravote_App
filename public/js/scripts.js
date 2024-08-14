@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const y = e.clientY - rect.top;  // y position within the element
 
         // Apply rotation and scale based on mouse position
-        const rotation = ((x - rect.width / 2) / rect.width) * 30; // Rotate up to 15 degrees
-        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.1; // Scale up to 10%
+        const rotation = ((x - rect.width / 2) / rect.width) * 60; // Increase rotation to up to 30 degrees
+        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.2; // Increase scaling to up to 20%
 
         dotsCircle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
     });
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset the rotation and scale when the mouse leaves the element
         dotsCircle.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
     });
+
     async function connectWallet() {
         if (window.ethereum) {
             provider = new ethers.providers.Web3Provider(window.ethereum);
