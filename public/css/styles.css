@@ -114,10 +114,10 @@ header nav ul li a:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* This keeps the dot centered initially */
     width: 200px; /* Adjust the size as needed */
-    pointer-events: none;
-    transition: transform 0.2s ease-out; /* Smooth transition */
+    pointer-events: none; /* Prevent pointer events from affecting the image */
+    transition: transform 0.2s ease-out; /* Smooth transition for animations */
 }
 
 

@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        const rotation = ((x - rect.width / 2) / rect.width) * 60;
-        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.2;
+        const rotation = ((x - rect.width / 2) / rect.width) * 30; // Smaller rotation for more subtle effect
+        const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.1; // Slight scale
 
-        dotsCircle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+        dotsCircle.style.transform = `rotate(${rotation}deg) scale(${scale})`;
     });
 
     dotsCircle.addEventListener('mouseleave', () => {
-        dotsCircle.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
+        dotsCircle.style.transform = 'rotate(0deg) scale(1)';
     });
 
     async function connectWallet() {
