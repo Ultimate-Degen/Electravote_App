@@ -20,18 +20,17 @@ p {
 
 /* Header */
 header {
-    background-color: #fff;
+    background-color: #333;
+    color: white;
     padding: 1rem 2rem;
-    border-bottom: 1px solid #e3e3e3;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header .logo {
-    font-family: "Azeret", Arial, sans-serif;
-    font-weight: 700;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 header nav ul {
@@ -47,9 +46,11 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    color: #121212;
+    color: white;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 header nav ul li a:hover {
@@ -57,59 +58,61 @@ header nav ul li a:hover {
 }
 
 /* Submenu styling */
-header nav ul li.menu {
-    display: none; /* Hide the menu by default */
-}
-
 header nav ul li.menu ul.submenu {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: #444;
     list-style: none;
     padding: 0;
     margin: 0;
-    border: 1px solid #e3e3e3;
     border-radius: 5px;
-}
-
-header nav ul li.menu ul.submenu li {
-    padding: 1rem;
-}
-
-header nav ul li.menu ul.submenu li a {
-    color: #121212;
-    font-weight: 400;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header nav ul li.menu:hover ul.submenu {
     display: block;
 }
 
-/* Mobile Menu Styling */
+header nav ul li.menu ul.submenu li {
+    padding: 0.5rem 1rem;
+}
+
+header nav ul li.menu ul.submenu li a {
+    color: white;
+    font-weight: 400;
+}
+
+header nav ul li.menu ul.submenu li a:hover {
+    background-color: #555;
+    color: #ffa978;
+}
+
+/* Mobile Menu */
 @media (max-width: 768px) {
     header nav ul {
         flex-direction: column;
-    }
-
-    header nav ul li.menu {
-        display: block;
-    }
-
-    header nav ul li:not(.menu) {
-        display: none; /* Hide non-menu items */
+        gap: 1rem;
     }
 
     header nav ul li.menu ul.submenu {
         position: static;
-        border: none;
         border-radius: 0;
+        box-shadow: none;
     }
 
     header nav ul li.menu ul.submenu li {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #e3e3e3;
+        padding: 1rem;
+    }
+
+    header nav ul li.menu ul.submenu li a:hover {
+        background-color: #555;
+        color: #ffa978;
     }
 }
+
 
 
 /* Hero Section */
