@@ -3,6 +3,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const disconnectWalletButton = document.getElementById('disconnectWallet');
     let provider;
 
+    const dotsCircle = document.getElementById('dotsCircle');
+
+    dotsCircle.addEventListener('mousemove', (e) => {
+        const rect = dotsCircle.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position within the element
+        const y = e.clientY - rect.top;  // y position within the element
+
+        // Apply a rotation based on the mouse position
+        dotsCircle.style.transform = `translate(-50%, -50%) rotate(${(x + y) / 10}deg)`;
+    });
+
+    dotsCircle.addEventListener('mouseleave', () => {
+        // Reset the rotation when the mouse leaves the element
+        dotsCircle.style.transform = 'translate(-50%, -50%)';
+    });
+
     async function connectWallet() {
         if (window.ethereum) {
             provider = new ethers.providers.Web3Provider(window.ethereum);
