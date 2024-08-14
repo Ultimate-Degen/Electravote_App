@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectraVote - Dashboard</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
 </head>
 <body>
     <header>
@@ -39,28 +40,39 @@
             <section id="dashboard">
                 <h1>Dashboard</h1>
                 
-                <h2>Recent Elections</h2>
-                <ul>
-                    <% recentElections.forEach(election => { %>
-                        <li>
-                            <h3><%= election.name %></h3>
-                            <p><strong>Start Date:</strong> <%= election.startDate %></p>
-                            <p><strong>End Date:</strong> <%= election.endDate %></p>
-                            <p><strong>Description:</strong> <%= election.description %></p>
-                        </li>
-                    <% }); %>
-                </ul>
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h2>Recent Elections</h2>
+                        <ul>
+                            <% recentElections.forEach(election => { %>
+                                <li>
+                                    <h3><%= election.name %></h3>
+                                    <p><strong>Start Date:</strong> <%= election.startDate %></p>
+                                    <p><strong>End Date:</strong> <%= election.endDate %></p>
+                                    <p><strong>Description:</strong> <%= election.description %></p>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>Recent Votes</h2>
+                        <ul>
+                            <% recentVotes.forEach(vote => { %>
+                                <li>
+                                    <p><strong>Election ID:</strong> <%= vote.electionId %></p>
+                                    <p><strong>Candidate:</strong> <%= vote.candidate %></p>
+                                    <p><strong>Date:</strong> <%= vote.date %></p>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
                 
-                <h2>Recent Votes</h2>
-                <ul>
-                    <% recentVotes.forEach(vote => { %>
-                        <li>
-                            <p><strong>Election ID:</strong> <%= vote.electionId %></p>
-                            <p><strong>Candidate:</strong> <%= vote.candidate %></p>
-                            <p><strong>Date:</strong> <%= vote.date %></p>
-                        </li>
-                    <% }); %>
-                </ul>
+                <div class="chart-container">
+                    <h2>Voting Trends</h2>
+                    <canvas id="votingTrendsChart"></canvas>
+                </div>
             </section>
         </main>
     </div>
@@ -78,6 +90,33 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </footer>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        const ctx = document.getElementById('votingTrendsChart').getContext('2d');
+        const votingTrendsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2024-08-01', '2024-08-02', '2024-08-03', '2024-08-04'], // Example dates
+                datasets: [{
+                    label: 'Votes Cast',
+                    data: [10, 20, 15, 25], // Example data
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

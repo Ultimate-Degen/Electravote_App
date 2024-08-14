@@ -288,6 +288,107 @@ header nav ul li:hover ul.submenu {
     color: hsla(0, 0%, 7%, 0.7);
 }
 
+/* Dashboard Page Specific Styles */
+.container {
+    display: flex;
+    margin: 2rem;
+}
+
+aside {
+    background-color: #fff;
+    width: 250px;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 2rem;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 1rem;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+aside ul li a i {
+    margin-right: 0.5rem;
+}
+
+aside ul li a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+main {
+    flex: 1;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 48%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    margin-bottom: 1rem;
+}
+
+.card ul li h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card ul li p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.chart-container {
+    margin-top: 2rem;
+}
+
+.chart-container h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
 /* Footer */
 footer {
     background-color: #333;
