@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        const rotation = ((x - rect.width / 2) / rect.width) * 30; // Smaller rotation for more subtle effect
+        // Apply rotation and scale based on mouse position
+        const rotation = ((x - rect.width / 2) / rect.width) * 30; // Smaller rotation for subtle effect
         const scale = 1 + ((y - rect.height / 2) / rect.height) * 0.1; // Slight scale
 
         dotsCircle.style.transform = `rotate(${rotation}deg) scale(${scale})`;

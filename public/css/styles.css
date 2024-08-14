@@ -1,300 +1,268 @@
 /* Global Styles */
-html, body {
-    height: 100%;
+body, html {
     margin: 0;
     padding: 0;
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
     box-sizing: border-box;
+    font-family: "Azeret", Arial, sans-serif;
+    color: #121212;
+    background-color: #f5f5f5;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Azeret Mono", Arial, sans-serif;
+    color: #121212;
 }
 
-/* Header and Navigation */
+p {
+    font-family: "Aleo", Arial, sans-serif;
+    color: hsla(0, 0%, 7%, 0.7);
+}
+
+/* Header */
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e3e3e3;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
+    font-family: "Azeret", Arial, sans-serif;
+    font-weight: 700;
     font-size: 1.5rem;
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
-}
-
-header nav ul li {
-    display: inline;
+    gap: 2rem;
 }
 
 header nav ul li a {
-    color: white;
     text-decoration: none;
+    color: #121212;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
 header nav ul li a:hover {
-    border-bottom: 2px solid #007bff;
-    transition: border-bottom 0.3s;
+    color: #ffa978;
 }
 
 /* Hero Section */
 .hero {
     position: relative;
     text-align: center;
-    padding: 4rem 1rem;
-    background-color: #333; /* You can change this color as needed */
+    padding: 6rem 1rem;
+    background-color: #333;
     color: white;
 }
 
-.hero h1, .hero p {
-    position: relative;
-    z-index: 2;
-}
-
 .hero h1 {
-    font-size: calc(1.5rem + 2vw);
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 .hero p {
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .wallet-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    position: relative;
-    z-index: 2;
 }
 
-.btn {
-    text-decoration: none;
+.wallet-buttons .btn {
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.btn.primary {
+.wallet-buttons .btn.primary {
     background-color: #007bff;
     color: white;
 }
 
-.btn.primary:hover {
+.wallet-buttons .btn.primary:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-.btn.secondary {
+.wallet-buttons .btn.secondary {
     background-color: #6c757d;
     color: white;
 }
 
-.btn.secondary:hover {
+.wallet-buttons .btn.secondary:hover {
     background-color: #5a6268;
+    transform: scale(1.05);
 }
 
 #dotsCircle {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* This keeps the dot centered initially */
-    width: 200px; /* Adjust the size as needed */
-    pointer-events: none; /* Prevent pointer events from affecting the image */
-    transition: transform 0.2s ease-out; /* Smooth transition for animations */
+    transform: translate(-50%, -50%);
+    width: 200px;
+    pointer-events: none;
+    transition: transform 0.2s ease-out;
 }
 
-
-/* Layout: Container, Aside, Main */
-.container {
-    display: flex;
-    padding: 1rem;
+/* Features Section */
+#features {
+    background-color: #f5f5f5;
+    padding: 4rem 2rem;
+    text-align: center;
 }
 
-aside {
-    background-color: #fff;
-    width: 250px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 60px; /* Adjust based on header height */
-    height: 100vh;
+#features h2 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
 }
 
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside ul li {
-    margin-bottom: 1rem;
-}
-
-aside ul li a {
-    text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-}
-
-aside ul li a i {
-    margin-right: 0.5rem;
-}
-
-main {
-    flex: 1;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-left: 1rem;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-    aside {
-        width: 100%;
-    }
-    main {
-        margin-left: 0;
-    }
-}
-
-/* Forms */
-.form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
+#features .feature {
+    display: inline-block;
+    width: 45%;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: white;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+#features .feature:hover {
+    transform: translateY(-10px);
 }
 
-.candidate-option {
+#features .feature i {
+    font-size: 2rem;
+    color: #007bff;
     margin-bottom: 1rem;
 }
 
-.form-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
+/* How It Works Section */
+#how-it-works {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#how-it-works h2 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+#how-it-works .step {
+    display: inline-block;
+    width: 30%;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+#how-it-works .step:hover {
+    transform: translateY(-10px);
+}
+
+#how-it-works .step i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+/* About Section */
+#about {
+    background-color: #f5f5f5;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#about h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Testimonials Section */
+#testimonials {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#testimonials h2 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+#testimonials .testimonial {
+    display: inline-block;
+    width: 45%;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#testimonials .testimonial p {
+    font-style: italic;
+    color: hsla(0, 0%, 7%, 0.7);
 }
 
 /* Footer */
 footer {
     background-color: #333;
     color: white;
-    padding: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
 }
 
 footer ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 footer ul li {
     display: inline;
-    margin: 0 0.5rem;
 }
 
 footer ul li a {
-    color: white;
     text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #ffa978;
 }
 
 footer .social-media a {
     color: white;
+    font-size: 1.5rem;
     margin: 0 0.5rem;
-    font-size: 1.2rem;
 }
 
-/* Features and How It Works Sections */
-#features {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 2rem 1rem;
-}
-
-#features .feature {
-    display: inline-block;
-    width: 45%;
-    padding: 1rem;
-    margin: 1rem;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#features .feature i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #007bff;
-}
-
-#how-it-works {
-    text-align: center;
-    padding: 2rem 1rem;
-}
-
-#how-it-works .step {
-    display: inline-block;
-    width: 30%;
-    padding: 1rem;
-    margin: 1rem;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-    #features .feature, #how-it-works .step {
-        width: 100%;
-        margin: 1rem 0;
-    }
-}
-
-#results-section {
-    margin-top: 2rem;
+footer .social-media a:hover {
+    color: #ffa978;
 }
