@@ -2,7 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const path = require('path');
 const app = express();
-
+const ejs = require('ejs');
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../../public')));
 
