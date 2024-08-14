@@ -7,6 +7,7 @@
     "start": "node app.js",
     "dev": "netlify dev",
     "prepare": "if [ -d views ]; then cp -r views netlify/functions/; fi",
+    "other-build-steps": "echo 'Running other build steps...'",
     "build": "npm run prepare && npm run other-build-steps"
   },
   "dependencies": {
