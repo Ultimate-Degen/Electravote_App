@@ -57,18 +57,8 @@ header nav ul li a:hover {
     position: relative;
     text-align: center;
     padding: 4rem 1rem;
-    background: url('hero-bg.jpg') no-repeat center center/cover;
+    background-color: #333; /* You can change this color as needed */
     color: white;
-}
-
-.hero .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
 }
 
 .hero h1, .hero p {
@@ -86,7 +76,7 @@ header nav ul li a:hover {
     margin-bottom: 1.5rem;
 }
 
-.cta-buttons {
+.wallet-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -126,9 +116,10 @@ header nav ul li a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200px; /* Adjust the size as needed */
-    pointer-events: none; /* Allow mouse events to pass through */
-    transition: transform 0.2s ease-out;
+    pointer-events: none;
+    transition: transform 0.2s ease-out; /* Smooth transition */
 }
+
 
 /* Layout: Container, Aside, Main */
 .container {
