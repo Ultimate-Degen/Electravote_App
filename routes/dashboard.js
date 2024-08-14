@@ -27,12 +27,33 @@ let votes = [
     { electionId: 2, candidate: 'Candidate B', date: '2024-08-12' }
 ]; // In-memory store for votes
 
+// Example blockchain stats and zk-proof status
+let blockchainStats = {
+    height: 5000,
+    timestamp: '2024-08-14T12:00:00Z',
+    transactions: 120
+};
+
+let zkProofStatus = "All zk-SNARK verifications are up-to-date and valid.";
+
+// Example total votes cast and voter turnout
+let totalVotesCast = votes.length; // Define totalVotesCast here
+let totalVoters = 100; // This would be dynamic in a real system
+let voterTurnout = (totalVotesCast / totalVoters) * 100;
+
 // Route to display the dashboard page
 router.get('/', (req, res) => {
     const recentElections = elections.slice(-5); // Get the last 5 elections
     const recentVotes = votes.slice(-5); // Get the last 5 votes
 
-    res.render('dashboard', { recentElections, recentVotes });
+    res.render('dashboard', {
+        recentElections,
+        recentVotes,
+        blockchainStats,
+        zkProofStatus,
+        totalVotesCast,  // Pass totalVotesCast to the template
+        voterTurnout
+    });
 });
 
 module.exports = router;

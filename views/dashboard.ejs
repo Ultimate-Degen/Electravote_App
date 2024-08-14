@@ -40,38 +40,104 @@
             <section id="dashboard">
                 <h1>Dashboard</h1>
                 
+                <!-- Election Overview -->
+                <div class="card">
+                    <h2>Election Overview</h2>
+                    <h3><%= recentElections[0].name %></h3>
+                    <p><strong>Description:</strong> <%= recentElections[0].description %></p>
+                    <p><strong>Start Date:</strong> <%= recentElections[0].startDate %></p>
+                    <p><strong>End Date:</strong> <%= recentElections[0].endDate %></p>
+                    <p><strong>Number of Candidates:</strong> <%= recentElections[0].candidates.length %></p>
+                </div>
+                
+                <!-- Voting Status -->
                 <div class="dashboard-cards">
                     <div class="card">
-                        <h2>Recent Elections</h2>
-                        <ul>
-                            <% recentElections.forEach(election => { %>
-                                <li>
-                                    <h3><%= election.name %></h3>
-                                    <p><strong>Start Date:</strong> <%= election.startDate %></p>
-                                    <p><strong>End Date:</strong> <%= election.endDate %></p>
-                                    <p><strong>Description:</strong> <%= election.description %></p>
-                                </li>
-                            <% }); %>
-                        </ul>
+                        <h2>Total Votes Cast</h2>
+                        <p><%= totalVotesCast %></p>
                     </div>
                     
                     <div class="card">
-                        <h2>Recent Votes</h2>
-                        <ul>
-                            <% recentVotes.forEach(vote => { %>
-                                <li>
-                                    <p><strong>Election ID:</strong> <%= vote.electionId %></p>
-                                    <p><strong>Candidate:</strong> <%= vote.candidate %></p>
-                                    <p><strong>Date:</strong> <%= vote.date %></p>
-                                </li>
-                            <% }); %>
-                        </ul>
+                        <h2>Voter Turnout</h2>
+                        <p><%= voterTurnout %>%</p>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h2>Real-Time Voting Activity</h2>
+                        <canvas id="votingActivityChart"></canvas>
                     </div>
                 </div>
                 
-                <div class="chart-container">
-                    <h2>Voting Trends</h2>
-                    <canvas id="votingTrendsChart"></canvas>
+                <!-- Security Information -->
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h2>Blockchain Statistics</h2>
+                        <p><strong>Block Height:</strong> <%= blockchainStats.height %></p>
+                        <p><strong>Latest Block Timestamp:</strong> <%= blockchainStats.timestamp %></p>
+                        <p><strong>Number of Transactions:</strong> <%= blockchainStats.transactions %></p>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>Zero-Knowledge Proof Verifications</h2>
+                        <p><%= zkProofStatus %></p>
+                    </div>
+                </div>
+                
+                <!-- Candidate Information -->
+                <div class="card">
+                    <h2>Candidate Information</h2>
+                    <ul>
+                        <% recentElections[0].candidates.forEach(candidate => { %>
+                            <li><strong><%= candidate %></strong></li>
+                        <% }); %>
+                    </ul>
+                    <h2>Current Standings</h2>
+                    <p>Candidate A: 45% of votes</p>
+                    <p>Candidate B: 30% of votes</p>
+                    <p>Candidate C: 25% of votes</p>
+                </div>
+                
+                <!-- Voting Process -->
+                <div class="card">
+                    <h2>Vote Now</h2>
+                    <button class="btn primary">Cast Your Vote</button>
+                    <p><strong>Voting Status:</strong> Not Voted</p>
+                </div>
+                
+                <!-- User Interaction -->
+                <div class="card">
+                    <h2>Notifications</h2>
+                    <p>No new notifications</p>
+                </div>
+                
+                <!-- Governance and Compliance -->
+                <div class="card">
+                    <h2>Election Rules</h2>
+                    <p>Information about eligibility and rules...</p>
+                    <h2>Audit Logs</h2>
+                    <p><a href="#">View Audit Logs</a></p>
+                </div>
+                
+                <!-- Historical Data -->
+                <div class="card">
+                    <h2>Previous Elections</h2>
+                    <p><a href="#">View Previous Elections</a></p>
+                </div>
+                
+                <!-- Trust and Verification -->
+                <div class="card">
+                    <h2>Independent Observers</h2>
+                    <p>Details about third-party observers...</p>
+                    <h2>Verification Tools</h2>
+                    <p><a href="#">Verify Your Vote</a></p>
+                </div>
+                
+                <!-- User Profile -->
+                <div class="card">
+                    <h2>Wallet Connection</h2>
+                    <p><strong>Connected Wallet:</strong> 0x123...456</p>
+                    <h2>Voting History</h2>
+                    <p><a href="#">View Voting History</a></p>
                 </div>
             </section>
         </main>
@@ -92,8 +158,8 @@
     </footer>
 
     <script>
-        const ctx = document.getElementById('votingTrendsChart').getContext('2d');
-        const votingTrendsChart = new Chart(ctx, {
+        const ctx = document.getElementById('votingActivityChart').getContext('2d');
+        const votingActivityChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['2024-08-01', '2024-08-02', '2024-08-03', '2024-08-04'], // Example dates
