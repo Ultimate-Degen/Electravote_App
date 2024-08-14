@@ -4,17 +4,13 @@
   "description": "ElectraVote - A secure, transparent, and scalable voting platform.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "netlify dev",
-    "prepare": "if [ -d views ]; then cp -r views netlify/functions/; fi",
-    "build": "npm run prepare"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
     "chart.js": "^3.5.1",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "serverless-http": "^2.7.0"
+    "express": "^4.19.2"
   },
   "author": "",
   "license": "MIT",
