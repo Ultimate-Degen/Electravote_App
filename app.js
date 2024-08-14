@@ -15,16 +15,16 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Routes
-const indexRoute = require('./routes/index');
-const createElectionRoute = require('./routes/create-election');
-const votingRoute = require('./routes/voting');
-const resultsRoute = require('./routes/results');
-const myElectionsRoute = require('./routes/my-elections');
-const votingHistoryRoute = require('./routes/voting-history');
-const profileRoute = require('./routes/profile');
-const settingsRoute = require('./routes/settings');
-const dashboardRoute = require('./routes/dashboard');
-const notificationsRoute = require('./routes/notifications');
+const indexRoute = require('./public/routes/index');
+const createElectionRoute = require('./public/routes/create-election');
+const votingRoute = require('./public/routes/voting');
+const resultsRoute = require('./public/routes/results');
+const myElectionsRoute = require('./public/routes/my-elections');
+const votingHistoryRoute = require('./public/routes/voting-history');
+const profileRoute = require('./public/routes/profile');
+const settingsRoute = require('./public/routes/settings');
+const dashboardRoute = require('./public/routes/dashboard');
+const notificationsRoute = require('./public/routes/notifications');
 
 app.use('/', indexRoute);
 app.use('/create-election', createElectionRoute);
